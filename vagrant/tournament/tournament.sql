@@ -6,7 +6,7 @@
 -- You can write comments in this file by starting them with two dashes, like
 -- these lines here.
 
--- 1st create the database, execute this comman
+-- 1st create the database, execute this command
 -- CREATE DATABASE tournament;
 CREATE TABLE players(name TEXT, id SERIAL PRIMARY KEY);
 CREATE TABLE matches(player_a INTEGER REFERENCES players(id),
