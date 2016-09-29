@@ -7,3 +7,10 @@
 -- these lines here.
 
 
+CREATE DATABASE tournament;
+
+CREATE TABLE players(id SERIAL PRIMARY KEY, name TEXT);
+CREATE TABLE matches(id SERIAL PRIMARY KEY,
+                     player_a INTEGER REFERENCES player(id),
+                     player_b INTEGER REFERENCES player(id),
+                     winner INTEGER REFERENCES player(id));
