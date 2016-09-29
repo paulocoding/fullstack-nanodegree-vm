@@ -21,8 +21,8 @@ SELECT players.id as id, name, count(matches.id) as wins
                  ON players.id = matches.winner
                  GROUP BY players.id
                  ORDER BY wins DESC;
--- games_count view
-CREATE VIEW games_count as
+-- matches_count view
+CREATE VIEW matches_count as
 SELECT players.id as id, name, count(matches.id) as games
                 FROM players LEFT JOIN matches
                 ON players.id = matches.player_a OR

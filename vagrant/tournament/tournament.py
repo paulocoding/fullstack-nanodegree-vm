@@ -70,11 +70,10 @@ def playerStandings():
     """
     DB = connect()
     c = DB.cursor()
-    # c.execute("SELECT id, name, FROM players;")
-    # winners query
     c.execute("""SELECT wins.id, wins.name, wins, games
-                    FROM wins, games_count
-                    WHERE wins.id = games_count.id;""")
+                    FROM wins, matches_count
+                    WHERE wins.id = matches_count.id
+                    ORDER BY wins.wins;""")
     r = c.fetchall()
     DB.close()
     return r
@@ -111,3 +110,14 @@ def swissPairings():
         id2: the second player's unique id
         name2: the second player's name
     """
+    DB = connect()
+    c = DB.cursor()
+    c.execute("""SELECT id, name, wins
+                    FROM wins
+                    ORDER BY wins;""")
+    r = c.fetchall()
+    DB.close()
+    pairs = []
+    for i in range(0, len(r), 2):
+        pairs.append((r[i][0], r[i][1], r[i+1][0], r[i+1][1]))
+    return pairs
