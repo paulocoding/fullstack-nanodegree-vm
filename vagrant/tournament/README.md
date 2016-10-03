@@ -16,8 +16,6 @@
 * Create the tournament database, by executing (on project folder):
 ```
   $ psql
-  $ CREATE DATABASE tournament;
-  $ \c tournament
   $ \i tournament.sql
   $ \q
 ```
